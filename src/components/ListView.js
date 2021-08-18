@@ -8,7 +8,13 @@ import Modal from './Modal';
 class Listview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isModalOpened: false };
+    this.state = {
+      isModalOpened: false,
+      itemList: [],
+      listId: 0,
+    };
+    this.handleItem = this.handleItem.bind(this);
+    this.onRemove = this.onRemove.bind(this);
   }
 
   openModal = () => {
@@ -18,6 +24,20 @@ class Listview extends React.Component {
     this.setState({ isModalOpened: false });
   };
 
+  handleItem(items) {
+    items.id = this.state.listId;
+    this.setState((current) => ({
+      itemList: current.itemList.concat(items),
+      listId: current.listId + 1,
+    }));
+  }
+
+  onRemove(id) {
+    this.setState((current) => ({
+      itemList: current.itemList.filter((obj) => obj.id !== id),
+    }));
+  }
+
   render() {
     return (
       <>
@@ -26,7 +46,7 @@ class Listview extends React.Component {
             <ListHeader />
           </div>
           <div id="ListBody">
-            <ListBody />
+            <ListBody itemData={this.state.itemList} onRemove={this.onRemove} />
           </div>
           <div id="ListFooter">
             <button id="circleButton" onClick={this.openModal}>
@@ -37,10 +57,10 @@ class Listview extends React.Component {
         <Modal
           open={this.state.isModalOpened}
           close={this.closeModal}
-          title="Create a chat room"
-        >
-          Modal Test Page
-        </Modal>
+          header="지출 추가"
+          onAddItem={this.handleItem}
+          onClose={this.closeModal}
+        ></Modal>
       </>
     );
   }

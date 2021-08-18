@@ -30,10 +30,10 @@
 }
 .modal > section > header button {
   position: absolute;
-  top: 3.5px;
-  right: 5px;
+  top: 7px;
+  right: 10px;
   width: 30px;
-  font-size: 21px;
+  font-size: 30px;
   font-weight: 700;
   text-align: center;
   color: #999;
@@ -60,6 +60,40 @@
   align-items: center;
   animation: modal-bg-show 0.3s;
 }
+
+.itemInputLabel {
+  font-size: 1.2vh;
+  color: #808080;
+  padding-bottom: 0.1vh;
+}
+
+.itemInputBox {
+  padding-bottom: 2vh;
+}
+
+.datePicker_date {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-width: 0.1vh;
+}
+
+.datePicker_button,
+.datePicker_container,
+.react-datepicker__header,
+.react-datepicker__header--custom {
+  background-color: #f7e600 !important;
+}
+
+.react-datepicker__day-names {
+  background-color: #f7e600;
+}
+
 @keyframes modal-show {
   from {
     opacity: 0;

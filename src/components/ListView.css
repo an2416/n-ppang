@@ -9,7 +9,7 @@
     border-radius: 10px;
     width: 256px;
     height: 80%;
-    background: white;
+    background: #dcdcdc;
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
       0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   }
@@ -17,13 +17,12 @@
   #ListBody {
     height: 85%;
     overflow-y: auto;
-    background: gray;
+    background: #dcdcdc;
   }
 
   #ListHeader {
     border-bottom: 0.15rem solid #e9ecef;
     padding-bottom: 3%;
-    margin-bottom: 3%;
   }
 
   #circleButton {
@@ -67,7 +66,7 @@
     border-radius: 10px;
     width: 80%;
     height: 80%;
-    background: white;
+    background: #dcdcdc;
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
       0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   }
@@ -75,13 +74,12 @@
   #ListBody {
     height: 85%;
     overflow-y: auto;
-    background: gray;
+    background: #dcdcdc;
   }
 
   #ListHeader {
     border-bottom: 0.15rem solid #e9ecef;
     padding-bottom: 3%;
-    margin-bottom: 3%;
   }
 
   #circleButton {
@@ -125,7 +123,7 @@
     border-radius: 10px;
     width: 480.8px;
     height: 80%;
-    background: white;
+    background: #dcdcdc;
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
       0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   }
@@ -133,13 +131,12 @@
   #ListBody {
     height: 85%;
     overflow-y: auto;
-    background: gray;
+    background: #dcdcdc;
   }
 
   #ListHeader {
     border-bottom: 2px solid #e9ecef;
     padding-bottom: 3%;
-    margin-bottom: 3%;
   }
 
   #circleButton {
