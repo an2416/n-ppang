@@ -149,6 +149,9 @@ class Modal extends React.Component {
               <div className="itemInputBox">
                 <div className="itemInputLabel">지출 금액 </div>
                 <input
+                  type="number"
+                  pattern="\d*"
+                  placeholder="number"
                   value={this.state.itemCost}
                   onChange={this.handleChange}
                   name="itemCost"
