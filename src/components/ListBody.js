@@ -1,13 +1,16 @@
 import React from 'react';
 import './ListBody.css';
 
-function ListBody({ itemData, onRemove }) {
+function ListBody({ itemData, onRemove, itemClickEvent }) {
   return (
     <>
       {itemData.map((itemData) => {
         return (
           <div key={itemData.id} className="itemListContainer">
-            <div className="leftContainer">
+            <div
+              className="leftContainer"
+              onClick={() => itemClickEvent(itemData.id)}
+            >
               <div>
                 {itemData.date.getFullYear()}년 {itemData.date.getMonth() + 1}월{' '}
                 {itemData.date.getDate()}일

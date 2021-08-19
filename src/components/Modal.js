@@ -8,6 +8,7 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      itemId: '',
       itemTitle: '',
       itemCost: '',
       itemDate: new Date(),
@@ -34,6 +35,7 @@ class Modal extends React.Component {
     }
 
     let itemData = {
+      id: this.state.itemId,
       title: this.state.itemTitle,
       cost: this.state.itemCost,
       date: this.state.itemDate,
@@ -46,6 +48,7 @@ class Modal extends React.Component {
   handleClose() {
     this.setState(
       {
+        itemId: '',
         itemTitle: '',
         itemCost: '',
         itemDate: new Date(),
@@ -61,9 +64,28 @@ class Modal extends React.Component {
     e.preventDefault();
   };
 
+  componentWillReceiveProps(props) {
+    if (props.selectedItem !== -1) {
+      this.setState({
+        itemId: props.selectedItem[0].id,
+        itemTitle: props.selectedItem[0].title,
+        itemCost: props.selectedItem[0].cost,
+        itemDate: props.selectedItem[0].date,
+        itemNum: props.selectedItem[0].num,
+      });
+    } else {
+      this.setState({
+        itemId: '',
+        itemTitle: '',
+        itemCost: '',
+        itemDate: new Date(),
+        itemNum: 1,
+      });
+    }
+  }
+
   render() {
     const { open, header } = this.props;
-
     return (
       <div className={open ? 'openModal modal' : 'modal'}>
         {open ? (

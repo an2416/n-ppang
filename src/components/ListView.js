@@ -12,21 +12,37 @@ class Listview extends React.Component {
       isModalOpened: false,
       itemList: [],
       listId: 0,
+      selectedItem: -1,
     };
     this.handleItem = this.handleItem.bind(this);
     this.onRemove = this.onRemove.bind(this);
+    this.itemClickEvent = this.itemClickEvent.bind(this);
   }
 
   openModal = () => {
-    this.setState({ isModalOpened: true });
+    this.setState({ selectedItem: -1, isModalOpened: true });
   };
   closeModal = () => {
-    this.setState({ isModalOpened: false });
+    this.setState({ selectedItem: -1, isModalOpened: false });
   };
 
   handleItem(items) {
+    if (items.id !== '') {
+      this.setState((current) => ({
+        selectedItem: -1,
+        itemList: current.itemList.map((item) => {
+          if (item.id === items.id) {
+            return items;
+          } else {
+            return item;
+          }
+        }),
+      }));
+      return;
+    }
     items.id = this.state.listId;
     this.setState((current) => ({
+      selectedItem: -1,
       itemList: current.itemList.concat(items),
       listId: current.listId + 1,
     }));
@@ -34,8 +50,13 @@ class Listview extends React.Component {
 
   onRemove(id) {
     this.setState((current) => ({
+      selectedItem: -1,
       itemList: current.itemList.filter((obj) => obj.id !== id),
     }));
+  }
+
+  itemClickEvent(id) {
+    this.setState({ selectedItem: id, isModalOpened: true });
   }
 
   render() {
@@ -46,7 +67,11 @@ class Listview extends React.Component {
             <ListHeader />
           </div>
           <div id="ListBody">
-            <ListBody itemData={this.state.itemList} onRemove={this.onRemove} />
+            <ListBody
+              itemClickEvent={this.itemClickEvent}
+              itemData={this.state.itemList}
+              onRemove={this.onRemove}
+            />
           </div>
           <div id="ListFooter">
             <button id="circleButton" onClick={this.openModal}>
@@ -60,6 +85,13 @@ class Listview extends React.Component {
           header="지출 추가"
           onAddItem={this.handleItem}
           onClose={this.closeModal}
+          selectedItem={
+            this.state.selectedItem === -1
+              ? -1
+              : this.state.itemList.filter(
+                  (obj) => obj.id === this.state.selectedItem,
+                )
+          }
         ></Modal>
       </>
     );
